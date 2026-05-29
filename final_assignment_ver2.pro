@@ -11,7 +11,8 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    stateHandler.cpp
 
 HEADERS += \
     mainwindow.h

@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QtStateMachine/QStateMachine>
+#include <QtStateMachine>
 #include <QDateTime>
 
 QT_BEGIN_NAMESPACE

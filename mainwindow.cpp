@@ -48,7 +48,14 @@ MainWindow::MainWindow(QWidget *parent)
     statemachine.setInitialState(sStart);
 
     sStart->addTransition(internalEvent,SIGNAL(customSignal()),sInitialiseHardware);
-        sInitialiseHardware->addTransition(internalEvent,SIGNAL(customeSignal()),sIdle);
+    sInitialiseHardware->addTransition(internalEvent,SIGNAL(customeSignal()),sIdle);
+    sIdle->addTransition(ui->pbAdmin,&QPushButton::clicked,sAdminMode);
+    sIdle->addTransition(internalEvent,SIGNAL(customSignal()),sChooseCoffee);
+
+    sChooseCoffee->addTransition(ui->pbLatte,&QPushButton::clicked,sLatte);
+    sChooseCoffee->addTransition(ui->pbCappuccino,&QPushButton::clicked,sCappuccino);
+    sChooseCoffee->addTransition(ui->pbAmericano,&QPushButton::clicked,sAmericano);
+
 
     sWaitForMoney->addTransition(ui->pb1e,&QPushButton::clicked,s1e);
     sWaitForMoney->addTransition(ui->pb25c,&QPushButton::clicked,s25c);
@@ -56,6 +63,10 @@ MainWindow::MainWindow(QWidget *parent)
     s25c->addTransition(internalEvent,SIGNAL(customNotEnough()),sWaitForMoney);
     s50c->addTransition(internalEvent,SIGNAL(customNotEnough()),sWaitForMoney);
     s1e->addTransition(internalEvent,SIGNAL(customNotEnough()),sWaitForMoney);
+
+
+
+
 
     connect(sStart, &QState::entered,this, &MainWindow::sStart_entered);
     connect(sStart,&QState::exited,this,&MainWindow::sStart_exited);
@@ -105,12 +116,5 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::sStart_entered(void){
-    QString logstring;
-    QString displaystring;
-    logstring = QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss ");
-    logstring += "sStart: entered, nextState=InitialisingHardware";
-    displaystring="Starting Machine...";
-    ui->CustomerScreen->appendPlainText(displaystring);
-    ui->AdminLog->appendPlainText(logstring);
-}
+
+
