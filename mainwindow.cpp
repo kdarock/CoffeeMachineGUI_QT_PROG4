@@ -7,6 +7,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    //start up page:
+    ui->stackedWidget->setCurrentWidget(ui->page_Coffee);
+
+    //declaring state:
     QState *sStart = new QState();
     QState *sInitialiseHardware= new QState();
     QState *sIdle= new QState();
@@ -26,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
     QState *sCancel= new QState();
     QState *sGiveCoffee= new QState();
 
+    //adding state to the statemachine:
     statemachine.addState(sStart);
     statemachine.addState(sInitialiseHardware);
     statemachine.addState(sIdle);
@@ -45,16 +50,30 @@ MainWindow::MainWindow(QWidget *parent)
     statemachine.addState(sRefund);
     statemachine.addState(sGiveCoffee);
 
+    //Set the starting point of the statemachine
     statemachine.setInitialState(sStart);
 
+    //Transition from one state to another:
     sStart->addTransition(internalEvent,SIGNAL(customSignal()),sInitialiseHardware);
-    sInitialiseHardware->addTransition(internalEvent,SIGNAL(customeSignal()),sIdle);
-    sIdle->addTransition(ui->pbAdmin,&QPushButton::clicked,sAdminMode);
+    sInitialiseHardware->addTransition(internalEvent,SIGNAL(customSignal()),sIdle);
+    sIdle->addTransition(ui->pbAdminLogin,&QPushButton::clicked,sAdminMode);
     sIdle->addTransition(internalEvent,SIGNAL(customSignal()),sChooseCoffee);
 
     sChooseCoffee->addTransition(ui->pbLatte,&QPushButton::clicked,sLatte);
     sChooseCoffee->addTransition(ui->pbCappuccino,&QPushButton::clicked,sCappuccino);
     sChooseCoffee->addTransition(ui->pbAmericano,&QPushButton::clicked,sAmericano);
+    sLatte->addTransition(internalEvent,SIGNAL(customSignal()),sConfirmation);
+    sCappuccino->addTransition(internalEvent,SIGNAL(customSignal()),sConfirmation);
+    sAmericano->addTransition(internalEvent,SIGNAL(customSignal()),sConfirmation);
+    sConfirmation->addTransition(ui->pbConfirm,&QPushButton::clicked,sWaitForMoney);
+    sConfirmation->addTransition(ui->pbCancel,&QPushButton::clicked,sCancel);
+
+
+    /* TO-DO LIST:
+     * need to add state transition
+     * implement functions in stateHandler file.
+     * implement file system.
+     */
 
 
     sWaitForMoney->addTransition(ui->pb1e,&QPushButton::clicked,s1e);
@@ -66,6 +85,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
+
+    connect(ui->pbAdminLogin,&QPushButton::clicked,this,&MainWindow::sAdminMode_entered); //make the admin state accessible from any state.
 
 
     connect(sStart, &QState::entered,this, &MainWindow::sStart_entered);
@@ -109,6 +130,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     statemachine.start();
+
 };
 
 MainWindow::~MainWindow()

@@ -4,6 +4,13 @@
 #include <QMainWindow>
 #include <QtStateMachine>
 #include <QDateTime>
+#include <QWidget>
+#include <QVBoxLayout>
+#include <QLabel>
+#include "moneyCollector.h"
+#include "display.h"
+
+typedef enum{Cappuccino,Americano,Latte}coffee_e;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -72,9 +79,16 @@ private slots:
     void sCancel_exited(void);
     void sGiveCoffee_exited(void);
 
+    void ProcessMoney(int money);
+
 
 private:
     Ui::MainWindow *ui;
     QStateMachine statemachine;
+    coffee_e chosenCoffee;
+    display d;
+    moneyCollector c;
+    /*save previous state for Admin Mode*/
+
 };
 #endif // MAINWINDOW_H

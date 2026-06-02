@@ -17,24 +17,24 @@
    <widget class="QPlainTextEdit" name="CustomerScreen">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>50</y>
-      <width>481</width>
-      <height>401</height>
+      <x>540</x>
+      <y>110</y>
+      <width>441</width>
+      <height>31</height>
      </rect>
     </property>
    </widget>
    <widget class="QPlainTextEdit" name="AdminLog">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>50</y>
+      <x>50</x>
+      <y>30</y>
       <width>451</width>
-      <height>161</height>
+      <height>411</height>
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pbAdmin">
+   <widget class="QPushButton" name="pbAdminLogin">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -50,16 +50,16 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>520</x>
+      <x>530</x>
       <y>220</y>
       <width>451</width>
-      <height>281</height>
+      <height>261</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
-    <widget class="QWidget" name="page_0">
+    <widget class="QWidget" name="page_Coffee">
      <widget class="QPushButton" name="pbLatte">
       <property name="geometry">
        <rect>
@@ -100,7 +100,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_1">
+    <widget class="QWidget" name="page_Confirmation">
      <widget class="QPushButton" name="pbConfirm">
       <property name="geometry">
        <rect>
@@ -128,7 +128,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_2">
+    <widget class="QWidget" name="page_Money">
      <widget class="QPushButton" name="pb1e">
       <property name="geometry">
        <rect>
@@ -169,6 +169,47 @@
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="page_Admin">
+     <widget class="QPushButton" name="pbRefill">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>80</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Refill</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>80</y>
+        <width>91</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Log out</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QLineEdit" name="InsertedCredit">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>150</y>
+      <width>113</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

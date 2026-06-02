@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPlainTextEdit>
@@ -27,19 +28,23 @@ public:
     QWidget *centralwidget;
     QPlainTextEdit *CustomerScreen;
     QPlainTextEdit *AdminLog;
-    QPushButton *pbAdmin;
+    QPushButton *pbAdminLogin;
     QStackedWidget *stackedWidget;
-    QWidget *page_0;
+    QWidget *page_Coffee;
     QPushButton *pbLatte;
     QPushButton *pbCappuccino;
     QPushButton *pbAmericano;
-    QWidget *page_1;
+    QWidget *page_Confirmation;
     QPushButton *pbConfirm;
     QPushButton *pbCancel;
-    QWidget *page_2;
+    QWidget *page_Money;
     QPushButton *pb1e;
     QPushButton *pb50c;
     QPushButton *pb25c;
+    QWidget *page_Admin;
+    QPushButton *pbRefill;
+    QPushButton *pushButton;
+    QLineEdit *InsertedCredit;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -52,49 +57,61 @@ public:
         centralwidget->setObjectName("centralwidget");
         CustomerScreen = new QPlainTextEdit(centralwidget);
         CustomerScreen->setObjectName("CustomerScreen");
-        CustomerScreen->setGeometry(QRect(30, 50, 481, 401));
+        CustomerScreen->setGeometry(QRect(540, 110, 441, 31));
         AdminLog = new QPlainTextEdit(centralwidget);
         AdminLog->setObjectName("AdminLog");
-        AdminLog->setGeometry(QRect(530, 50, 451, 161));
-        pbAdmin = new QPushButton(centralwidget);
-        pbAdmin->setObjectName("pbAdmin");
-        pbAdmin->setGeometry(QRect(30, 460, 121, 31));
+        AdminLog->setGeometry(QRect(50, 30, 451, 411));
+        pbAdminLogin = new QPushButton(centralwidget);
+        pbAdminLogin->setObjectName("pbAdminLogin");
+        pbAdminLogin->setGeometry(QRect(30, 460, 121, 31));
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName("stackedWidget");
-        stackedWidget->setGeometry(QRect(520, 220, 451, 281));
-        page_0 = new QWidget();
-        page_0->setObjectName("page_0");
-        pbLatte = new QPushButton(page_0);
+        stackedWidget->setGeometry(QRect(530, 220, 451, 261));
+        page_Coffee = new QWidget();
+        page_Coffee->setObjectName("page_Coffee");
+        pbLatte = new QPushButton(page_Coffee);
         pbLatte->setObjectName("pbLatte");
         pbLatte->setGeometry(QRect(10, 110, 121, 41));
-        pbCappuccino = new QPushButton(page_0);
+        pbCappuccino = new QPushButton(page_Coffee);
         pbCappuccino->setObjectName("pbCappuccino");
         pbCappuccino->setGeometry(QRect(160, 110, 121, 41));
-        pbAmericano = new QPushButton(page_0);
+        pbAmericano = new QPushButton(page_Coffee);
         pbAmericano->setObjectName("pbAmericano");
         pbAmericano->setGeometry(QRect(300, 110, 131, 41));
-        stackedWidget->addWidget(page_0);
-        page_1 = new QWidget();
-        page_1->setObjectName("page_1");
-        pbConfirm = new QPushButton(page_1);
+        stackedWidget->addWidget(page_Coffee);
+        page_Confirmation = new QWidget();
+        page_Confirmation->setObjectName("page_Confirmation");
+        pbConfirm = new QPushButton(page_Confirmation);
         pbConfirm->setObjectName("pbConfirm");
         pbConfirm->setGeometry(QRect(50, 100, 131, 71));
-        pbCancel = new QPushButton(page_1);
+        pbCancel = new QPushButton(page_Confirmation);
         pbCancel->setObjectName("pbCancel");
         pbCancel->setGeometry(QRect(280, 100, 131, 71));
-        stackedWidget->addWidget(page_1);
-        page_2 = new QWidget();
-        page_2->setObjectName("page_2");
-        pb1e = new QPushButton(page_2);
+        stackedWidget->addWidget(page_Confirmation);
+        page_Money = new QWidget();
+        page_Money->setObjectName("page_Money");
+        pb1e = new QPushButton(page_Money);
         pb1e->setObjectName("pb1e");
         pb1e->setGeometry(QRect(10, 100, 131, 41));
-        pb50c = new QPushButton(page_2);
+        pb50c = new QPushButton(page_Money);
         pb50c->setObjectName("pb50c");
         pb50c->setGeometry(QRect(170, 100, 131, 41));
-        pb25c = new QPushButton(page_2);
+        pb25c = new QPushButton(page_Money);
         pb25c->setObjectName("pb25c");
         pb25c->setGeometry(QRect(320, 100, 121, 41));
-        stackedWidget->addWidget(page_2);
+        stackedWidget->addWidget(page_Money);
+        page_Admin = new QWidget();
+        page_Admin->setObjectName("page_Admin");
+        pbRefill = new QPushButton(page_Admin);
+        pbRefill->setObjectName("pbRefill");
+        pbRefill->setGeometry(QRect(100, 80, 91, 41));
+        pushButton = new QPushButton(page_Admin);
+        pushButton->setObjectName("pushButton");
+        pushButton->setGeometry(QRect(270, 80, 91, 41));
+        stackedWidget->addWidget(page_Admin);
+        InsertedCredit = new QLineEdit(centralwidget);
+        InsertedCredit->setObjectName("InsertedCredit");
+        InsertedCredit->setGeometry(QRect(540, 150, 113, 24));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -106,7 +123,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -115,7 +132,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        pbAdmin->setText(QCoreApplication::translate("MainWindow", "Admin", nullptr));
+        pbAdminLogin->setText(QCoreApplication::translate("MainWindow", "Admin", nullptr));
         pbLatte->setText(QCoreApplication::translate("MainWindow", "Latte", nullptr));
         pbCappuccino->setText(QCoreApplication::translate("MainWindow", "Cappuccino", nullptr));
         pbAmericano->setText(QCoreApplication::translate("MainWindow", "Americano", nullptr));
@@ -124,6 +141,9 @@ public:
         pb1e->setText(QCoreApplication::translate("MainWindow", "1 Euro", nullptr));
         pb50c->setText(QCoreApplication::translate("MainWindow", "50 cents", nullptr));
         pb25c->setText(QCoreApplication::translate("MainWindow", "25 cents", nullptr));
+        pbRefill->setText(QCoreApplication::translate("MainWindow", "Refill", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "Log out", nullptr));
+        InsertedCredit->setText(QString());
     } // retranslateUi
 
 };
