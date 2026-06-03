@@ -8,7 +8,7 @@ moneyCollector::moneyCollector()
     cappuccinoPrice = PRICE_CAPPUCCINO_INIT;
     americanoPrice = PRICE_AMERICANO_INIT;
     insertedCredit = 0;
-    change = 0;
+    changeAvailable = 0;
 }
 
 void moneyCollector::setCoffeePrice(int latte,int cappuccino, int americano){
@@ -17,18 +17,31 @@ void moneyCollector::setCoffeePrice(int latte,int cappuccino, int americano){
     americanoPrice = americano;
 }
 
+int moneyCollector::getLattePrice(void){
+    return lattePrice;
+}
+
+int moneyCollector::getCappuccinoPrice(void){
+    return cappuccinoPrice;
+}
+
+int moneyCollector::getAmericanoPrice(void){
+    return americanoPrice;
+}
+
+
 void moneyCollector::setChange(int amount){
-    change = amount;
+    changeAvailable = amount;
 }
 
 int moneyCollector::getChange(void)
 {
-    return change;
+    return changeAvailable;
 }
 
 void moneyCollector::addChange(int amount)
 {
-    change += amount;
+    changeAvailable += amount;
 }
 
 void moneyCollector::addInsertedCredit(int amount){
@@ -43,8 +56,8 @@ int moneyCollector::getInsertedCredit(void){
     return insertedCredit;
 }
 
-bool moneyCollector::checkCredit(void){
-    if(insertedCredit >= priceSumCoffee){
+bool moneyCollector::checkCredit(int priceSum){
+    if(insertedCredit >= priceSum){
         return true;
     }
     return false;

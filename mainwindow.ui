@@ -34,19 +34,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pbAdminLogin">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>460</y>
-      <width>121</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Admin</string>
-    </property>
-   </widget>
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
@@ -57,7 +44,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page_Coffee">
      <widget class="QPushButton" name="pbLatte">
@@ -97,6 +84,34 @@
       </property>
       <property name="text">
        <string>Americano</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbAdminLogin">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Admin</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_giveCoffee">
+     <widget class="QPushButton" name="pbNextCustomer">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>80</y>
+        <width>131</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Next customer</string>
       </property>
      </widget>
     </widget>
@@ -183,7 +198,7 @@
        <string>Refill</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pbLogout">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -194,6 +209,49 @@
       </property>
       <property name="text">
        <string>Log out</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_Confirmation2">
+     <widget class="QPushButton" name="pbRefund">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>70</y>
+        <width>80</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Refund</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbConfirm2">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>70</y>
+        <width>80</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Confirm</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_MakeCoffee">
+     <widget class="QProgressBar" name="progressBar">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>110</y>
+        <width>211</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="value">
+       <number>24</number>
       </property>
      </widget>
     </widget>
@@ -209,6 +267,26 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="Change">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>150</y>
+      <width>113</width>
+      <height>24</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="CoffeePrice">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>150</y>
+      <width>113</width>
+      <height>24</height>
+     </rect>
     </property>
    </widget>
   </widget>

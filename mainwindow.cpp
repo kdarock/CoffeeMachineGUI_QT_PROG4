@@ -55,38 +55,45 @@ MainWindow::MainWindow(QWidget *parent)
 
     //Transition from one state to another:
     sStart->addTransition(internalEvent,SIGNAL(customSignal()),sInitialiseHardware);
+
     sInitialiseHardware->addTransition(internalEvent,SIGNAL(customSignal()),sIdle);
-    sIdle->addTransition(ui->pbAdminLogin,&QPushButton::clicked,sAdminMode);
+
     sIdle->addTransition(internalEvent,SIGNAL(customSignal()),sChooseCoffee);
 
     sChooseCoffee->addTransition(ui->pbLatte,&QPushButton::clicked,sLatte);
     sChooseCoffee->addTransition(ui->pbCappuccino,&QPushButton::clicked,sCappuccino);
     sChooseCoffee->addTransition(ui->pbAmericano,&QPushButton::clicked,sAmericano);
+    sChooseCoffee->addTransition(ui->pbAdminLogin,&QPushButton::clicked,sAdminMode);
+
     sLatte->addTransition(internalEvent,SIGNAL(customSignal()),sConfirmation);
     sCappuccino->addTransition(internalEvent,SIGNAL(customSignal()),sConfirmation);
     sAmericano->addTransition(internalEvent,SIGNAL(customSignal()),sConfirmation);
+
     sConfirmation->addTransition(ui->pbConfirm,&QPushButton::clicked,sWaitForMoney);
-    sConfirmation->addTransition(ui->pbCancel,&QPushButton::clicked,sCancel);
+    sConfirmation->addTransition(ui->pbCancel,&QPushButton::clicked,sIdle);
 
+    sConfirmation2->addTransition(ui->pbRefund,&QPushButton::clicked,sRefund);
+    sConfirmation2->addTransition(ui->pbConfirm2,&QPushButton::clicked,sMakeCoffee);
 
-    /* TO-DO LIST:
-     * need to add state transition
-     * implement functions in stateHandler file.
-     * implement file system.
-     */
-
+    sRefund->addTransition(internalEvent,SIGNAL(customSignal()),sIdle);
 
     sWaitForMoney->addTransition(ui->pb1e,&QPushButton::clicked,s1e);
     sWaitForMoney->addTransition(ui->pb25c,&QPushButton::clicked,s25c);
     sWaitForMoney->addTransition(ui->pb50c,&QPushButton::clicked,s50c);
+
     s25c->addTransition(internalEvent,SIGNAL(customNotEnough()),sWaitForMoney);
     s50c->addTransition(internalEvent,SIGNAL(customNotEnough()),sWaitForMoney);
     s1e->addTransition(internalEvent,SIGNAL(customNotEnough()),sWaitForMoney);
 
+    s25c->addTransition(internalEvent,SIGNAL(customEnough()),sConfirmation2);
+    s50c->addTransition(internalEvent,SIGNAL(customEnough()),sConfirmation2);
+    s1e->addTransition(internalEvent,SIGNAL(customEnough()),sConfirmation2);
 
+    sAdminMode->addTransition(ui->pbLogout,&QPushButton::clicked,sIdle);
 
+    sMakeCoffee->addTransition(internalEvent,SIGNAL(customSignal()),sGiveCoffee);
+    sGiveCoffee->addTransition(ui->pbNextCustomer,&QPushButton::clicked,sIdle);
 
-    connect(ui->pbAdminLogin,&QPushButton::clicked,this,&MainWindow::sAdminMode_entered); //make the admin state accessible from any state.
 
 
     connect(sStart, &QState::entered,this, &MainWindow::sStart_entered);

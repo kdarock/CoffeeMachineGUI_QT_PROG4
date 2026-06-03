@@ -8,19 +8,22 @@ public:
     void setInsertedCredit(int amount);
     int getCoffeePrice();
     void setCoffeePrice(int latte, int cappuccino, int americano);
+    int getLattePrice(void);
+    int getCappuccinoPrice(void);
+    int getAmericanoPrice(void);
     void addInsertedCredit(int amount);
-    bool checkCredit();
+    bool checkCredit(int priceSum);
     void addChange(int amount);
     int getChange();
     void setChange(int amount);
+
 
 private:
     int lattePrice;
     int cappuccinoPrice;
     int americanoPrice;
-    int change;
+    int changeAvailable;
     int insertedCredit;
-    int priceSumCoffee;
 };
 
 #endif // MONEYCOLLECTOR_H

@@ -79,8 +79,8 @@ private slots:
     void sCancel_exited(void);
     void sGiveCoffee_exited(void);
 
-    void ProcessMoney(int money);
-
+    void processMoney(int money);
+    void startMakingCoffee(int duration);
 
 private:
     Ui::MainWindow *ui;
@@ -88,6 +88,13 @@ private:
     coffee_e chosenCoffee;
     display d;
     moneyCollector c;
+    int priceSumCoffee;
+    int changeGive;
+    /*Make coffee progress bar*/
+    QTimer*  m_timer    = nullptr;
+    int      m_progress = 0;
+
+
     /*save previous state for Admin Mode*/
 
 };
