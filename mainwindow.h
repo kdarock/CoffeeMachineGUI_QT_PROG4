@@ -7,9 +7,11 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QThread>
+#include <QTimer>
+#include <fstream>
 #include "moneyCollector.h"
 #include "display.h"
-
 typedef enum{Cappuccino,Americano,Latte}coffee_e;
 
 QT_BEGIN_NAMESPACE
@@ -59,6 +61,7 @@ private slots:
     void sRefund_entered(void);
     void sCancel_entered(void);
     void sGiveCoffee_entered(void);
+    void sRefill_entered(void);
 
     void sStart_exited(void);
     void sInitialiseHardware_exited(void);
@@ -78,6 +81,7 @@ private slots:
     void sRefund_exited(void);
     void sCancel_exited(void);
     void sGiveCoffee_exited(void);
+    void sRefill_exited(void);
 
     void processMoney(int money);
     void startMakingCoffee(int duration);
@@ -90,12 +94,18 @@ private:
     moneyCollector c;
     int priceSumCoffee;
     int changeGive;
+    int availableCoffee;
+    int availableMilk;
+    int availableChange;
     /*Make coffee progress bar*/
     QTimer*  m_timer    = nullptr;
     int      m_progress = 0;
-
-
-    /*save previous state for Admin Mode*/
-
+    /*Handling QState states functions*/
+    void QState_dec(void);
+    void stateAdd(QState* state);
+    void connectState(void);
+    void stateTransition(void);
+    /*text file logging*/
+    std::ofstream logFile;
 };
 #endif // MAINWINDOW_H

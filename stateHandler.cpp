@@ -2,6 +2,18 @@
 #include "ui_mainwindow.h"
 #include "display.h"
 
+#define INITIAL_CHANGE 150
+#define INITIAL_COFFEE 20
+#define INITIAL_MILK   20
+
+#define LATTE_COFFEE  4
+#define CAPPUCCINO_COFFEE 2
+#define AMERICANO_COFFEE 3
+
+#define LATTE_MILK 4
+#define CAPPUCCINO_MILK 2
+#define AMERICANO_MILK 0
+
 void MainWindow::sStart_entered(void){
     /*logging and display string*/
     d.setLogString(d.getRealTime());
@@ -44,6 +56,9 @@ void MainWindow::sIdle_entered(void){
     ui->stackedWidget->setCurrentWidget(ui->page_Coffee);
     changeGive=0;
     c.setInsertedCredit(0);
+    availableCoffee=INITIAL_CHANGE;
+    availableMilk=INITIAL_MILK;
+    availableChange=INITIAL_CHANGE;
     ui->InsertedCredit->setText(QString::number(c.getInsertedCredit()));
     ui->Change->setText(QString::number(changeGive));
     emit internalEvent->customSignal();
@@ -267,19 +282,33 @@ void MainWindow::sMakeCoffee_entered(void){
     if(chosenCoffee==Latte){
         d.setCustomerString("Your Latte is being made");
         ui->CustomerScreen->appendPlainText(d.getCustomerString());
-        startMakingCoffee(1000);
+        availableCoffee-=LATTE_COFFEE;
+        availableMilk-=LATTE_MILK;
+        startMakingCoffee(4000);
+        QTimer::singleShot(4000, this, [this](){
+            emit internalEvent->customSignal();
+        });
     }
     else if(chosenCoffee==Cappuccino){
         d.setCustomerString("Your Cappuccino is being made");
         ui->CustomerScreen->appendPlainText(d.getCustomerString());
-        startMakingCoffee(300);
+        availableCoffee-=CAPPUCCINO_COFFEE;
+        availableMilk-=CAPPUCCINO_MILK;
+        startMakingCoffee(3000);
+        QTimer::singleShot(3000, this, [this](){
+            emit internalEvent->customSignal();
+        });
     }
     else{
         d.setCustomerString("Your Americano is being made");
         ui->CustomerScreen->appendPlainText(d.getCustomerString());
-        startMakingCoffee(450);
+        availableCoffee-=AMERICANO_COFFEE;
+        availableMilk-=AMERICANO_MILK;
+        startMakingCoffee(2000);
+        QTimer::singleShot(2000, this, [this](){
+            emit internalEvent->customSignal();
+        });
     }
-    emit internalEvent->customSignal();
 }
 
 void MainWindow::sMakeCoffee_exited(void){
@@ -330,10 +359,14 @@ void MainWindow::sGiveCoffee_entered(void){
     d.setCustomerString("Please grab your coffee and change");
     ui->AdminLog->appendPlainText(d.getLogString());
     ui->CustomerScreen->appendPlainText(d.getCustomerString());
-
     ui->stackedWidget->setCurrentWidget(ui->page_giveCoffee);
 
-
+    /*logFile.open("logging.txt",std::ios::app);
+    logFile << "Coffee:" <<availableCoffee <<std::endl;
+    logFile <<"Milk: " <<availableMilk <<std::endl;
+    logFile <<"Change:" <<availableChange<<std::endl<<std::endl;
+    logFile.close();*/
+    emit internalEvent->customSignal();
 }
 
 void MainWindow::sGiveCoffee_exited(void){
@@ -342,11 +375,33 @@ void MainWindow::sGiveCoffee_exited(void){
     ui->AdminLog->appendPlainText(d.getLogString());
 }
 
+void MainWindow::sRefill_entered(void){
+    d.setLogString(d.getRealTime());
+    d.addLogString("sRefill: entered");
+    d.setCustomerString("Stock Refilling...");
+    ui->AdminLog->appendPlainText(d.getLogString());
+    ui->CustomerScreen->appendPlainText(d.getCustomerString());
+
+    availableChange=INITIAL_CHANGE;
+    availableCoffee=INITIAL_COFFEE;
+    availableMilk=INITIAL_MILK;
+    QTimer::singleShot(2000, this, [this](){
+        emit internalEvent->customSignal();
+    });
+}
+
+void MainWindow::sRefill_exited(void){
+    d.setLogString(d.getRealTime());
+    d.addLogString("sRefill: exited");
+    ui->AdminLog->appendPlainText(d.getLogString());
+}
+
 void MainWindow::processMoney(int money){
     c.addInsertedCredit(money);
     ui->InsertedCredit->setText(QString::number(c.getInsertedCredit()));
     if(c.checkCredit(priceSumCoffee)){
         changeGive=c.getInsertedCredit() - priceSumCoffee;
+        availableChange-=changeGive;
         ui->AdminLog->appendPlainText("signal: customEnough()");
         ui->CustomerScreen->appendPlainText("Enough Money Inserted");
         ui->Change->setText(QString::number(changeGive));
@@ -359,6 +414,8 @@ void MainWindow::processMoney(int money){
         emit internalEvent->customNotEnough();
     }
 }
+
+
 
 void MainWindow::startMakingCoffee(int duration){
     m_progress = 0;

@@ -19,7 +19,8 @@ SOURCES += \
 HEADERS += \
     display.h \
     mainwindow.h \
-    moneyCollector.h
+    moneyCollector.h \
+    state.h
 
 FORMS += \
     mainwindow.ui

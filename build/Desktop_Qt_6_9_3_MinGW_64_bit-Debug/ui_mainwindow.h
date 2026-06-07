@@ -10,9 +10,12 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QDateTimeEdit>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QProgressBar>
@@ -44,6 +47,8 @@ public:
     QPushButton *pb1e;
     QPushButton *pb50c;
     QPushButton *pb25c;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
     QWidget *page_Admin;
     QPushButton *pbRefill;
     QPushButton *pbLogout;
@@ -55,7 +60,9 @@ public:
     QLineEdit *InsertedCredit;
     QLineEdit *Change;
     QLineEdit *CoffeePrice;
+    QDateTimeEdit *currentDateTime;
     QMenuBar *menubar;
+    QMenu *menuCoffee_Machine;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -115,6 +122,12 @@ public:
         pb25c = new QPushButton(page_Money);
         pb25c->setObjectName("pb25c");
         pb25c->setGeometry(QRect(320, 100, 121, 41));
+        pushButton = new QPushButton(page_Money);
+        pushButton->setObjectName("pushButton");
+        pushButton->setGeometry(QRect(80, 170, 131, 41));
+        pushButton_2 = new QPushButton(page_Money);
+        pushButton_2->setObjectName("pushButton_2");
+        pushButton_2->setGeometry(QRect(260, 170, 121, 41));
         stackedWidget->addWidget(page_Money);
         page_Admin = new QWidget();
         page_Admin->setObjectName("page_Admin");
@@ -150,18 +163,25 @@ public:
         CoffeePrice = new QLineEdit(centralwidget);
         CoffeePrice->setObjectName("CoffeePrice");
         CoffeePrice->setGeometry(QRect(670, 150, 113, 24));
+        currentDateTime = new QDateTimeEdit(centralwidget);
+        currentDateTime->setObjectName("currentDateTime");
+        currentDateTime->setGeometry(QRect(50, 0, 194, 25));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1009, 21));
+        menubar->setGeometry(QRect(0, 0, 1009, 17));
+        menuCoffee_Machine = new QMenu(menubar);
+        menuCoffee_Machine->setObjectName("menuCoffee_Machine");
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
 
+        menubar->addAction(menuCoffee_Machine->menuAction());
+
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -180,11 +200,14 @@ public:
         pb1e->setText(QCoreApplication::translate("MainWindow", "1 Euro", nullptr));
         pb50c->setText(QCoreApplication::translate("MainWindow", "50 cents", nullptr));
         pb25c->setText(QCoreApplication::translate("MainWindow", "25 cents", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "2 Euros", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("MainWindow", "1 cent", nullptr));
         pbRefill->setText(QCoreApplication::translate("MainWindow", "Refill", nullptr));
         pbLogout->setText(QCoreApplication::translate("MainWindow", "Log out", nullptr));
         pbRefund->setText(QCoreApplication::translate("MainWindow", "Refund", nullptr));
         pbConfirm2->setText(QCoreApplication::translate("MainWindow", "Confirm", nullptr));
         InsertedCredit->setText(QString());
+        menuCoffee_Machine->setTitle(QCoreApplication::translate("MainWindow", "Coffee Machine", nullptr));
     } // retranslateUi
 
 };

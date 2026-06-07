@@ -29,21 +29,6 @@ int moneyCollector::getAmericanoPrice(void){
     return americanoPrice;
 }
 
-
-void moneyCollector::setChange(int amount){
-    changeAvailable = amount;
-}
-
-int moneyCollector::getChange(void)
-{
-    return changeAvailable;
-}
-
-void moneyCollector::addChange(int amount)
-{
-    changeAvailable += amount;
-}
-
 void moneyCollector::addInsertedCredit(int amount){
     insertedCredit += amount;
 }

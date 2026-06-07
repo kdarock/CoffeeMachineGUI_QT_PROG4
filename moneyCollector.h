@@ -13,10 +13,6 @@ public:
     int getAmericanoPrice(void);
     void addInsertedCredit(int amount);
     bool checkCredit(int priceSum);
-    void addChange(int amount);
-    int getChange();
-    void setChange(int amount);
-
 
 private:
     int lattePrice;
