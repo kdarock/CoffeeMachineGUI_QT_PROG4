@@ -3,7 +3,7 @@
 
 #include <QtStateMachine>
 #include <vector>
-#define STATE_AMOUNT 19
+#define STATE_AMOUNT 21
 enum{sStart,
     sInitialiseHardware,
     sIdle,
@@ -15,6 +15,8 @@ enum{sStart,
     sLatte,
     sConfirmation,
     sWaitForMoney,
+    s2e,
+    s1c,
     s50c,
     s25c,
     s1e,

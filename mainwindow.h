@@ -56,6 +56,8 @@ private slots:
     void s50c_entered(void);
     void s25c_entered(void);
     void s1e_entered(void);
+    void s2e_entered(void);
+    void s1c_entered(void);
     void sConfirmation2_entered(void);
     void sMakeCoffee_entered(void);
     void sRefund_entered(void);
@@ -76,6 +78,8 @@ private slots:
     void s50c_exited(void);
     void s25c_exited(void);
     void s1e_exited(void);
+    void s2e_exited(void);
+    void s1c_exited(void);
     void sConfirmation2_exited(void);
     void sMakeCoffee_exited(void);
     void sRefund_exited(void);

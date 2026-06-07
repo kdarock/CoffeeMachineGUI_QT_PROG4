@@ -183,7 +183,7 @@
        <string>25 cents</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pb2e">
       <property name="geometry">
        <rect>
         <x>80</x>
@@ -196,7 +196,7 @@
        <string>2 Euros</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="pb1c">
       <property name="geometry">
        <rect>
         <x>260</x>
@@ -312,16 +312,6 @@
       <y>150</y>
       <width>113</width>
       <height>24</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QDateTimeEdit" name="currentDateTime">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>0</y>
-      <width>194</width>
-      <height>25</height>
      </rect>
     </property>
    </widget>

@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QDateTimeEdit>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -47,8 +46,8 @@ public:
     QPushButton *pb1e;
     QPushButton *pb50c;
     QPushButton *pb25c;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
+    QPushButton *pb2e;
+    QPushButton *pb1c;
     QWidget *page_Admin;
     QPushButton *pbRefill;
     QPushButton *pbLogout;
@@ -60,7 +59,6 @@ public:
     QLineEdit *InsertedCredit;
     QLineEdit *Change;
     QLineEdit *CoffeePrice;
-    QDateTimeEdit *currentDateTime;
     QMenuBar *menubar;
     QMenu *menuCoffee_Machine;
     QStatusBar *statusbar;
@@ -122,12 +120,12 @@ public:
         pb25c = new QPushButton(page_Money);
         pb25c->setObjectName("pb25c");
         pb25c->setGeometry(QRect(320, 100, 121, 41));
-        pushButton = new QPushButton(page_Money);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(80, 170, 131, 41));
-        pushButton_2 = new QPushButton(page_Money);
-        pushButton_2->setObjectName("pushButton_2");
-        pushButton_2->setGeometry(QRect(260, 170, 121, 41));
+        pb2e = new QPushButton(page_Money);
+        pb2e->setObjectName("pb2e");
+        pb2e->setGeometry(QRect(80, 170, 131, 41));
+        pb1c = new QPushButton(page_Money);
+        pb1c->setObjectName("pb1c");
+        pb1c->setGeometry(QRect(260, 170, 121, 41));
         stackedWidget->addWidget(page_Money);
         page_Admin = new QWidget();
         page_Admin->setObjectName("page_Admin");
@@ -163,9 +161,6 @@ public:
         CoffeePrice = new QLineEdit(centralwidget);
         CoffeePrice->setObjectName("CoffeePrice");
         CoffeePrice->setGeometry(QRect(670, 150, 113, 24));
-        currentDateTime = new QDateTimeEdit(centralwidget);
-        currentDateTime->setObjectName("currentDateTime");
-        currentDateTime->setGeometry(QRect(50, 0, 194, 25));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -200,8 +195,8 @@ public:
         pb1e->setText(QCoreApplication::translate("MainWindow", "1 Euro", nullptr));
         pb50c->setText(QCoreApplication::translate("MainWindow", "50 cents", nullptr));
         pb25c->setText(QCoreApplication::translate("MainWindow", "25 cents", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "2 Euros", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "1 cent", nullptr));
+        pb2e->setText(QCoreApplication::translate("MainWindow", "2 Euros", nullptr));
+        pb1c->setText(QCoreApplication::translate("MainWindow", "1 cent", nullptr));
         pbRefill->setText(QCoreApplication::translate("MainWindow", "Refill", nullptr));
         pbLogout->setText(QCoreApplication::translate("MainWindow", "Log out", nullptr));
         pbRefund->setText(QCoreApplication::translate("MainWindow", "Refund", nullptr));

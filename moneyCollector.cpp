@@ -1,12 +1,12 @@
 #include "mainwindow.h"
-#define PRICE_LATTE_INIT 400;
-#define PRICE_CAPPUCCINO_INIT 225;
-#define PRICE_AMERICANO_INIT 300;
+#define PRICE_LATTE 400;
+#define PRICE_CAPPUCCINO 225;
+#define PRICE_AMERICANO 300;
 moneyCollector::moneyCollector()
 {
-    lattePrice = PRICE_LATTE_INIT;
-    cappuccinoPrice = PRICE_CAPPUCCINO_INIT;
-    americanoPrice = PRICE_AMERICANO_INIT;
+    lattePrice = PRICE_LATTE;
+    cappuccinoPrice = PRICE_CAPPUCCINO;
+    americanoPrice = PRICE_AMERICANO;
     insertedCredit = 0;
     changeAvailable = 0;
 }

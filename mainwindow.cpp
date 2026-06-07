@@ -46,6 +46,8 @@ void MainWindow::QState_dec(void){
     states[sLatte]= new QState();
     states[sConfirmation]= new QState();
     states[sWaitForMoney] = new QState();
+    states[s2e] = new QState();
+    states[s1c] = new QState();
     states[s50c] = new QState();
     states[s25c] = new QState();
     states[s1e] = new QState();
@@ -84,14 +86,13 @@ void MainWindow::stateTransition(void){
     states[sWaitForMoney]->addTransition(ui->pb1e,  &QPushButton::clicked, states[s1e]);
     states[sWaitForMoney]->addTransition(ui->pb25c, &QPushButton::clicked, states[s25c]);
     states[sWaitForMoney]->addTransition(ui->pb50c, &QPushButton::clicked, states[s50c]);
+    states[sWaitForMoney]->addTransition(ui->pb2e, &QPushButton::clicked, states[s2e]);
+    states[sWaitForMoney]->addTransition(ui->pb1c, &QPushButton::clicked, states[s1c]);
 
-    states[s25c]->addTransition(internalEvent, SIGNAL(customNotEnough()), states[sWaitForMoney]);
-    states[s50c]->addTransition(internalEvent, SIGNAL(customNotEnough()), states[sWaitForMoney]);
-    states[s1e]->addTransition(internalEvent,  SIGNAL(customNotEnough()), states[sWaitForMoney]);
-
-    states[s25c]->addTransition(internalEvent, SIGNAL(customEnough()), states[sConfirmation2]);
-    states[s50c]->addTransition(internalEvent, SIGNAL(customEnough()), states[sConfirmation2]);
-    states[s1e]->addTransition(internalEvent,  SIGNAL(customEnough()), states[sConfirmation2]);
+    for (auto coinState : {s1e, s25c, s50c, s2e, s1c}) {
+        states[coinState]->addTransition(internalEvent, SIGNAL(customNotEnough()),states[sWaitForMoney]);
+        states[coinState]->addTransition(internalEvent, SIGNAL(customEnough()), states[sConfirmation2]);
+    }
 
     states[sAdminMode]->addTransition(ui->pbLogout, &QPushButton::clicked, states[sIdle]);
     states[sAdminMode]->addTransition(ui->pbRefill,&QPushButton::clicked,states[sRefill]);
@@ -122,6 +123,10 @@ void MainWindow::connectState(void){
     connect(states[sConfirmation], &QState::exited, this, &MainWindow::sConfirmation_exited);
     connect(states[sWaitForMoney], &QState::entered, this, &MainWindow::sWaitForMoney_entered);
     connect(states[sWaitForMoney], &QState::exited, this, &MainWindow::sWaitForMoney_exited);
+    connect(states[s2e], &QState::entered, this, &MainWindow::s2e_entered);
+    connect(states[s2e], &QState::exited, this, &MainWindow::s2e_exited);
+    connect(states[s1c], &QState::entered, this, &MainWindow::s1c_entered);
+    connect(states[s1c], &QState::exited, this, &MainWindow::s1c_exited);
     connect(states[s50c], &QState::entered, this, &MainWindow::s50c_entered);
     connect(states[s50c], &QState::exited, this, &MainWindow::s50c_exited);
     connect(states[s25c], &QState::entered, this, &MainWindow::s25c_entered);

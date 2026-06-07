@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include "display.h"
 
-#define INITIAL_CHANGE 150
+#define INITIAL_CHANGE 500
 #define INITIAL_COFFEE 20
 #define INITIAL_MILK   20
 
@@ -59,6 +59,7 @@ void MainWindow::sIdle_entered(void){
     availableCoffee=INITIAL_CHANGE;
     availableMilk=INITIAL_MILK;
     availableChange=INITIAL_CHANGE;
+    ui->CoffeePrice->setText(QString::number(0));
     ui->InsertedCredit->setText(QString::number(c.getInsertedCredit()));
     ui->Change->setText(QString::number(changeGive));
     emit internalEvent->customSignal();
@@ -115,6 +116,7 @@ void MainWindow::sCappuccino_entered(void){
     ui->AdminLog->appendPlainText(d.getLogString());
     /*logic*/
     chosenCoffee=Cappuccino;
+        ui->CoffeePrice->setText(QString::number(c.getCappuccinoPrice()));
     priceSumCoffee=c.getCappuccinoPrice();
     emit internalEvent->customSignal();
 }
@@ -136,6 +138,7 @@ void MainWindow::sAmericano_entered(void){
     ui->AdminLog->appendPlainText(d.getLogString());
     /*logic*/
     chosenCoffee=Americano;
+        ui->CoffeePrice->setText(QString::number(c.getAmericanoPrice()));
     priceSumCoffee=c.getAmericanoPrice();
     emit internalEvent->customSignal();
 }
@@ -156,6 +159,7 @@ void MainWindow::sLatte_entered(void){
     ui->AdminLog->appendPlainText(d.getLogString());
     /*logic*/
     chosenCoffee=Latte;
+    ui->CoffeePrice->setText(QString::number(c.getLattePrice()));
     priceSumCoffee=c.getLattePrice();
     emit internalEvent->customSignal();
 }
@@ -197,11 +201,45 @@ void MainWindow::sWaitForMoney_entered(void){
     /*Signal: wait for push buttons to be pushed (pb1e,pb50c,pb25c)*/
 }
 
+
 void MainWindow::sWaitForMoney_exited(void){
     /*logging and display string*/
     d.setLogString(d.getRealTime());
     d.addLogString("sWaitForMoney: exited");
     ui->AdminLog->appendPlainText(d.getLogString());
+}
+
+void MainWindow::s2e_entered(void){
+    /*logging and display string*/
+    d.setLogString(d.getRealTime());
+    d.addLogString("s2e: entered");
+    d.setCustomerString("You inserted: 2 euros");
+    ui->CustomerScreen->appendPlainText(d.getCustomerString());
+    ui->AdminLog->appendPlainText(d.getLogString());
+    processMoney(200);
+}
+
+void MainWindow::s2e_exited(void){
+    d.setLogString(d.getRealTime());
+    d.addLogString("s2e: exited");
+    ui->AdminLog->appendPlainText(d.getCustomerString());
+}
+
+void MainWindow::s1c_entered(void){
+    /*logging and display string*/
+    d.setLogString(d.getRealTime());
+    d.addLogString("s1c: entered");
+    d.setCustomerString("You inserted: 1 cents");
+    ui->CustomerScreen->appendPlainText(d.getCustomerString());
+    ui->AdminLog->appendPlainText(d.getLogString());
+    processMoney(1);
+}
+
+void MainWindow::s1c_exited(void){
+    d.setLogString(d.getRealTime());
+    d.addLogString("s1c: exited");
+    ui->AdminLog->appendPlainText(d.getCustomerString());
+
 }
 
 void MainWindow::s50c_entered(void){
@@ -318,7 +356,6 @@ void MainWindow::sMakeCoffee_exited(void){
 }
 
 void MainWindow::sRefund_entered(void){
-
     d.setLogString(d.getRealTime());
     d.addLogString("sRefund: entered");
     d.setCustomerString("Refunded");
@@ -360,12 +397,12 @@ void MainWindow::sGiveCoffee_entered(void){
     ui->AdminLog->appendPlainText(d.getLogString());
     ui->CustomerScreen->appendPlainText(d.getCustomerString());
     ui->stackedWidget->setCurrentWidget(ui->page_giveCoffee);
-
-    /*logFile.open("logging.txt",std::ios::app);
+    availableChange+=c.getInsertedCredit()-priceSumCoffee;
+    logFile.open("logging.txt",std::ios::app);
     logFile << "Coffee:" <<availableCoffee <<std::endl;
     logFile <<"Milk: " <<availableMilk <<std::endl;
     logFile <<"Change:" <<availableChange<<std::endl<<std::endl;
-    logFile.close();*/
+    logFile.close();
     emit internalEvent->customSignal();
 }
 

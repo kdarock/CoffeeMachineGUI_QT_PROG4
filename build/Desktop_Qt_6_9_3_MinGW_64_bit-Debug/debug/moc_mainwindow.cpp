@@ -164,6 +164,8 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "s50c_entered",
         "s25c_entered",
         "s1e_entered",
+        "s2e_entered",
+        "s1c_entered",
         "sConfirmation2_entered",
         "sMakeCoffee_entered",
         "sRefund_entered",
@@ -183,6 +185,8 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "s50c_exited",
         "s25c_exited",
         "s1e_exited",
+        "s2e_exited",
+        "s1c_exited",
         "sConfirmation2_exited",
         "sMakeCoffee_exited",
         "sRefund_exited",
@@ -222,63 +226,71 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 's1e_entered'
         QtMocHelpers::SlotData<void()>(14, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sConfirmation2_entered'
+        // Slot 's2e_entered'
         QtMocHelpers::SlotData<void()>(15, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sMakeCoffee_entered'
+        // Slot 's1c_entered'
         QtMocHelpers::SlotData<void()>(16, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sRefund_entered'
+        // Slot 'sConfirmation2_entered'
         QtMocHelpers::SlotData<void()>(17, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sCancel_entered'
+        // Slot 'sMakeCoffee_entered'
         QtMocHelpers::SlotData<void()>(18, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sGiveCoffee_entered'
+        // Slot 'sRefund_entered'
         QtMocHelpers::SlotData<void()>(19, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sRefill_entered'
+        // Slot 'sCancel_entered'
         QtMocHelpers::SlotData<void()>(20, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sStart_exited'
+        // Slot 'sGiveCoffee_entered'
         QtMocHelpers::SlotData<void()>(21, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sInitialiseHardware_exited'
+        // Slot 'sRefill_entered'
         QtMocHelpers::SlotData<void()>(22, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sIdle_exited'
+        // Slot 'sStart_exited'
         QtMocHelpers::SlotData<void()>(23, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sChooseCoffee_exited'
+        // Slot 'sInitialiseHardware_exited'
         QtMocHelpers::SlotData<void()>(24, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sAdminMode_exited'
+        // Slot 'sIdle_exited'
         QtMocHelpers::SlotData<void()>(25, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sCappuccino_exited'
+        // Slot 'sChooseCoffee_exited'
         QtMocHelpers::SlotData<void()>(26, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sAmericano_exited'
+        // Slot 'sAdminMode_exited'
         QtMocHelpers::SlotData<void()>(27, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sLatte_exited'
+        // Slot 'sCappuccino_exited'
         QtMocHelpers::SlotData<void()>(28, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sConfirmation_exited'
+        // Slot 'sAmericano_exited'
         QtMocHelpers::SlotData<void()>(29, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sWaitForMoney_exited'
+        // Slot 'sLatte_exited'
         QtMocHelpers::SlotData<void()>(30, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 's50c_exited'
+        // Slot 'sConfirmation_exited'
         QtMocHelpers::SlotData<void()>(31, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 's25c_exited'
+        // Slot 'sWaitForMoney_exited'
         QtMocHelpers::SlotData<void()>(32, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 's1e_exited'
+        // Slot 's50c_exited'
         QtMocHelpers::SlotData<void()>(33, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sConfirmation2_exited'
+        // Slot 's25c_exited'
         QtMocHelpers::SlotData<void()>(34, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sMakeCoffee_exited'
+        // Slot 's1e_exited'
         QtMocHelpers::SlotData<void()>(35, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sRefund_exited'
+        // Slot 's2e_exited'
         QtMocHelpers::SlotData<void()>(36, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sCancel_exited'
+        // Slot 's1c_exited'
         QtMocHelpers::SlotData<void()>(37, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sGiveCoffee_exited'
+        // Slot 'sConfirmation2_exited'
         QtMocHelpers::SlotData<void()>(38, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'sRefill_exited'
+        // Slot 'sMakeCoffee_exited'
         QtMocHelpers::SlotData<void()>(39, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'sRefund_exited'
+        QtMocHelpers::SlotData<void()>(40, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'sCancel_exited'
+        QtMocHelpers::SlotData<void()>(41, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'sGiveCoffee_exited'
+        QtMocHelpers::SlotData<void()>(42, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'sRefill_exited'
+        QtMocHelpers::SlotData<void()>(43, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'processMoney'
-        QtMocHelpers::SlotData<void(int)>(40, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 41 },
+        QtMocHelpers::SlotData<void(int)>(44, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 45 },
         }}),
         // Slot 'startMakingCoffee'
-        QtMocHelpers::SlotData<void(int)>(42, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 43 },
+        QtMocHelpers::SlotData<void(int)>(46, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 47 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -316,33 +328,37 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 10: _t->s50c_entered(); break;
         case 11: _t->s25c_entered(); break;
         case 12: _t->s1e_entered(); break;
-        case 13: _t->sConfirmation2_entered(); break;
-        case 14: _t->sMakeCoffee_entered(); break;
-        case 15: _t->sRefund_entered(); break;
-        case 16: _t->sCancel_entered(); break;
-        case 17: _t->sGiveCoffee_entered(); break;
-        case 18: _t->sRefill_entered(); break;
-        case 19: _t->sStart_exited(); break;
-        case 20: _t->sInitialiseHardware_exited(); break;
-        case 21: _t->sIdle_exited(); break;
-        case 22: _t->sChooseCoffee_exited(); break;
-        case 23: _t->sAdminMode_exited(); break;
-        case 24: _t->sCappuccino_exited(); break;
-        case 25: _t->sAmericano_exited(); break;
-        case 26: _t->sLatte_exited(); break;
-        case 27: _t->sConfirmation_exited(); break;
-        case 28: _t->sWaitForMoney_exited(); break;
-        case 29: _t->s50c_exited(); break;
-        case 30: _t->s25c_exited(); break;
-        case 31: _t->s1e_exited(); break;
-        case 32: _t->sConfirmation2_exited(); break;
-        case 33: _t->sMakeCoffee_exited(); break;
-        case 34: _t->sRefund_exited(); break;
-        case 35: _t->sCancel_exited(); break;
-        case 36: _t->sGiveCoffee_exited(); break;
-        case 37: _t->sRefill_exited(); break;
-        case 38: _t->processMoney((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 39: _t->startMakingCoffee((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 13: _t->s2e_entered(); break;
+        case 14: _t->s1c_entered(); break;
+        case 15: _t->sConfirmation2_entered(); break;
+        case 16: _t->sMakeCoffee_entered(); break;
+        case 17: _t->sRefund_entered(); break;
+        case 18: _t->sCancel_entered(); break;
+        case 19: _t->sGiveCoffee_entered(); break;
+        case 20: _t->sRefill_entered(); break;
+        case 21: _t->sStart_exited(); break;
+        case 22: _t->sInitialiseHardware_exited(); break;
+        case 23: _t->sIdle_exited(); break;
+        case 24: _t->sChooseCoffee_exited(); break;
+        case 25: _t->sAdminMode_exited(); break;
+        case 26: _t->sCappuccino_exited(); break;
+        case 27: _t->sAmericano_exited(); break;
+        case 28: _t->sLatte_exited(); break;
+        case 29: _t->sConfirmation_exited(); break;
+        case 30: _t->sWaitForMoney_exited(); break;
+        case 31: _t->s50c_exited(); break;
+        case 32: _t->s25c_exited(); break;
+        case 33: _t->s1e_exited(); break;
+        case 34: _t->s2e_exited(); break;
+        case 35: _t->s1c_exited(); break;
+        case 36: _t->sConfirmation2_exited(); break;
+        case 37: _t->sMakeCoffee_exited(); break;
+        case 38: _t->sRefund_exited(); break;
+        case 39: _t->sCancel_exited(); break;
+        case 40: _t->sGiveCoffee_exited(); break;
+        case 41: _t->sRefill_exited(); break;
+        case 42: _t->processMoney((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 43: _t->startMakingCoffee((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         default: ;
         }
     }
@@ -367,14 +383,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 40)
+        if (_id < 44)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 40;
+        _id -= 44;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 40)
+        if (_id < 44)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 40;
+        _id -= 44;
     }
     return _id;
 }
