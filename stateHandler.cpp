@@ -54,17 +54,40 @@ void MainWindow::sIdle_entered(void){
     d.setCustomerString("Machine Idling");
     ui->AdminLog->appendPlainText(d.getLogString());
     ui->stackedWidget->setCurrentWidget(ui->page_Coffee);
-    changeGive=0;
-    c.setInsertedCredit(0);
-    availableCoffee=INITIAL_CHANGE;
-    availableMilk=INITIAL_MILK;
-    availableChange=INITIAL_CHANGE;
+    if(availableCoffee >4 && availableMilk > 4 && availableChange > 500)
+    {
+     /*Init for new customer*/
+        changeGive=0;
+        c.setInsertedCredit(0);
+        availableCoffee=INITIAL_CHANGE;
+        availableMilk=INITIAL_MILK;
+        availableChange=INITIAL_CHANGE;
+    }
+    else{
+        /*if stock is low*/
+        emit internalEvent->customSignal();
+    }
     ui->CoffeePrice->setText(QString::number(0));
     ui->InsertedCredit->setText(QString::number(c.getInsertedCredit()));
     ui->Change->setText(QString::number(changeGive));
     emit internalEvent->customSignal();
 
 }
+
+void MainWindow::sCheckStock_entered(void){
+    d.setLogString(d.getRealTime());
+    d.addLogString("sCheckStock: entered");
+    d.setCustomerString("STOCK LOW! Please ask admin to refill.");
+    ui->AdminLog->appendPlainText(d.getLogString());
+    ui->stackedWidget->setCurrentWidget(ui->page_Stock);
+}
+
+void MainWindow::sCheckStock_exited(void){
+    d.setLogString(d.getRealTime());
+    d.addLogString("sCheckStock: exited");;
+    ui->AdminLog->appendPlainText(d.getLogString());
+}
+
 void MainWindow::sIdle_exited(void){
     /*logging and display string*/
     d.setLogString(d.getRealTime());

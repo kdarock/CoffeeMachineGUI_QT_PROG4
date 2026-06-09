@@ -42,6 +42,8 @@ public:
     QWidget *page_Confirmation;
     QPushButton *pbConfirm;
     QPushButton *pbCancel;
+    QWidget *page_Stock;
+    QPushButton *pbAdminLogin_2;
     QWidget *page_Money;
     QPushButton *pb1e;
     QPushButton *pb50c;
@@ -109,6 +111,12 @@ public:
         pbCancel->setObjectName("pbCancel");
         pbCancel->setGeometry(QRect(280, 100, 131, 71));
         stackedWidget->addWidget(page_Confirmation);
+        page_Stock = new QWidget();
+        page_Stock->setObjectName("page_Stock");
+        pbAdminLogin_2 = new QPushButton(page_Stock);
+        pbAdminLogin_2->setObjectName("pbAdminLogin_2");
+        pbAdminLogin_2->setGeometry(QRect(180, 110, 111, 31));
+        stackedWidget->addWidget(page_Stock);
         page_Money = new QWidget();
         page_Money->setObjectName("page_Money");
         pb1e = new QPushButton(page_Money);
@@ -192,6 +200,7 @@ public:
         pbNextCustomer->setText(QCoreApplication::translate("MainWindow", "Next customer", nullptr));
         pbConfirm->setText(QCoreApplication::translate("MainWindow", "Confirm", nullptr));
         pbCancel->setText(QCoreApplication::translate("MainWindow", "Cancel", nullptr));
+        pbAdminLogin_2->setText(QCoreApplication::translate("MainWindow", "Admin", nullptr));
         pb1e->setText(QCoreApplication::translate("MainWindow", "1 Euro", nullptr));
         pb50c->setText(QCoreApplication::translate("MainWindow", "50 cents", nullptr));
         pb25c->setText(QCoreApplication::translate("MainWindow", "25 cents", nullptr));

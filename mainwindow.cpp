@@ -39,6 +39,7 @@ void MainWindow::QState_dec(void){
     states[sInitialiseHardware]= new QState();
     states[sIdle]= new QState();
     states[sChooseCoffee] = new QState();
+    states[sCheckStock] = new QState();
     states[sAdminMode]= new QState();
     states[sRefill]= new QState();
     states[sCappuccino]= new QState();
@@ -65,6 +66,8 @@ void MainWindow::stateTransition(void){
     states[sInitialiseHardware]->addTransition(internalEvent, SIGNAL(customSignal()), states[sIdle]);
 
     states[sIdle]->addTransition(internalEvent, SIGNAL(customSignal()), states[sChooseCoffee]);
+    states[sCheckStock]->addTransition(ui->pbAdminLogin_2,&QPushButton::clicked,states[sAdminMode]);
+    states[sIdle]->addTransition(internalEvent,SIGNAL(customSignal()),states[sCheckStock]);
 
     states[sChooseCoffee]->addTransition(ui->pbLatte,      &QPushButton::clicked, states[sLatte]);
     states[sChooseCoffee]->addTransition(ui->pbCappuccino, &QPushButton::clicked, states[sCappuccino]);
@@ -109,6 +112,8 @@ void MainWindow::connectState(void){
     connect(states[sInitialiseHardware],&QState::exited,this,&MainWindow::sInitialiseHardware_exited);
     connect(states[sIdle],&QState::entered,this,&MainWindow::sIdle_entered);
     connect(states[sIdle],&QState::exited,this,&MainWindow::sIdle_exited);
+    connect(states[sCheckStock],&QState::entered,this,&MainWindow::sCheckStock_entered);
+    connect(states[sCheckStock],&QState::exited,this,&MainWindow::sCheckStock_exited);
     connect(states[sChooseCoffee],&QState::entered,this,&MainWindow::sChooseCoffee_entered);
     connect(states[sChooseCoffee],&QState::exited,this,&MainWindow::sChooseCoffee_exited);
     connect(states[sAdminMode],&QState::entered,this,&MainWindow::sAdminMode_entered);

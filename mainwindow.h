@@ -64,6 +64,7 @@ private slots:
     void sCancel_entered(void);
     void sGiveCoffee_entered(void);
     void sRefill_entered(void);
+    void sCheckStock_entered(void);
 
     void sStart_exited(void);
     void sInitialiseHardware_exited(void);
@@ -86,6 +87,7 @@ private slots:
     void sCancel_exited(void);
     void sGiveCoffee_exited(void);
     void sRefill_exited(void);
+    void sCheckStock_exited(void);
 
     void processMoney(int money);
     void startMakingCoffee(int duration);

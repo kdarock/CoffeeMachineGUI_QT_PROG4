@@ -1,4 +1,0 @@
-Coffee:496
-Milk: 16
-Change:500
-
