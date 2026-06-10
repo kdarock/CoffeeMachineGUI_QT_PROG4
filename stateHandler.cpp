@@ -2,9 +2,9 @@
 #include "ui_mainwindow.h"
 #include "display.h"
 
-#define INITIAL_CHANGE 500
-#define INITIAL_COFFEE 20
-#define INITIAL_MILK   20
+#define INITIAL_CHANGE 15
+#define INITIAL_COFFEE 4
+#define INITIAL_MILK   4
 
 #define LATTE_COFFEE  4
 #define CAPPUCCINO_COFFEE 2
@@ -53,24 +53,24 @@ void MainWindow::sIdle_entered(void){
     d.addLogString("sIdle: entered");
     d.setCustomerString("Machine Idling");
     ui->AdminLog->appendPlainText(d.getLogString());
+    ui->CustomerScreen->appendPlainText(d.getCustomerString());
     ui->stackedWidget->setCurrentWidget(ui->page_Coffee);
-    if(availableCoffee >4 && availableMilk > 4 && availableChange > 500)
-    {
-     /*Init for new customer*/
-        changeGive=0;
-        c.setInsertedCredit(0);
-        availableCoffee=INITIAL_CHANGE;
-        availableMilk=INITIAL_MILK;
-        availableChange=INITIAL_CHANGE;
-    }
-    else{
-        /*if stock is low*/
-        emit internalEvent->customSignal();
-    }
+    changeGive=0;
+    c.setInsertedCredit(0);
     ui->CoffeePrice->setText(QString::number(0));
     ui->InsertedCredit->setText(QString::number(c.getInsertedCredit()));
     ui->Change->setText(QString::number(changeGive));
-    emit internalEvent->customSignal();
+    if(availableCoffee >= 4 && availableMilk >= 4 && availableChange >= 15)
+    {
+     /*Init for new customer*/
+        emit internalEvent->customSignal();
+    }
+    else{
+        /*if stock is low*/
+        emit internalEvent->customStock();
+    }
+
+
 
 }
 
@@ -79,6 +79,7 @@ void MainWindow::sCheckStock_entered(void){
     d.addLogString("sCheckStock: entered");
     d.setCustomerString("STOCK LOW! Please ask admin to refill.");
     ui->AdminLog->appendPlainText(d.getLogString());
+    ui->CustomerScreen->appendPlainText(d.getCustomerString());
     ui->stackedWidget->setCurrentWidget(ui->page_Stock);
 }
 

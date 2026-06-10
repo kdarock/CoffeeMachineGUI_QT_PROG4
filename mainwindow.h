@@ -29,6 +29,7 @@ signals:
     void customSignal();
     void customEnough();
     void customNotEnough();
+    void customStock();
 };
 
 

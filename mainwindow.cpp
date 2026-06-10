@@ -67,7 +67,7 @@ void MainWindow::stateTransition(void){
 
     states[sIdle]->addTransition(internalEvent, SIGNAL(customSignal()), states[sChooseCoffee]);
     states[sCheckStock]->addTransition(ui->pbAdminLogin_2,&QPushButton::clicked,states[sAdminMode]);
-    states[sIdle]->addTransition(internalEvent,SIGNAL(customSignal()),states[sCheckStock]);
+    states[sIdle]->addTransition(internalEvent,SIGNAL(customStock()),states[sCheckStock]);
 
     states[sChooseCoffee]->addTransition(ui->pbLatte,      &QPushButton::clicked, states[sLatte]);
     states[sChooseCoffee]->addTransition(ui->pbCappuccino, &QPushButton::clicked, states[sCappuccino]);
