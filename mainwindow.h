@@ -43,7 +43,6 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    //class to process money
     CustomObject *internalEvent= new CustomObject;
 private slots:
     void sStart_entered(void);

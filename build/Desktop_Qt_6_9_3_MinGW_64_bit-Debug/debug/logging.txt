@@ -4,3 +4,7 @@ Refilled Coffee:20
 Refilled Milk: 20
 Refilled Change:100
 
+Refilled Coffee:20
+Refilled Milk: 20
+Refilled Change:100
+

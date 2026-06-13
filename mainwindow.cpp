@@ -114,7 +114,7 @@ void MainWindow::stateTransition(void){
 }
 
 void MainWindow::connectState(void){
-     connect(states[sStart], &QState::entered,this, &MainWindow::sStart_entered);
+    connect(states[sStart], &QState::entered,this, &MainWindow::sStart_entered);
     connect(states[sStart],&QState::exited,this,&MainWindow::sStart_exited);
     connect(states[sInitialiseHardware],&QState::entered,this,&MainWindow::sInitialiseHardware_entered);
     connect(states[sInitialiseHardware],&QState::exited,this,&MainWindow::sInitialiseHardware_exited);
