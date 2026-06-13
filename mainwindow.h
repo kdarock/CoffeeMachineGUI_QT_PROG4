@@ -12,6 +12,8 @@
 #include <fstream>
 #include "moneyCollector.h"
 #include "display.h"
+#include <QSettings>
+
 typedef enum{Cappuccino,Americano,Latte}coffee_e;
 
 QT_BEGIN_NAMESPACE

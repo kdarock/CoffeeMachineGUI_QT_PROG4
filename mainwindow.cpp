@@ -8,8 +8,12 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     /*init file logging*/
-    logFile.open("logging.txt");
-    logFile.close();
+   // logFile.open("logging.txt");
+    //logFile.close();
+    QSettings settings("stock", "CoffeeMachine");
+    availableCoffee = settings.value("stockCoffee", availableCoffee).toInt();
+    availableMilk   = settings.value("stockMilk",   availableMilk).toInt();
+    availableChange = settings.value("stockChange", availableChange).toInt();
     //start page:
     ui->stackedWidget->setCurrentWidget(ui->page_Coffee);
     //declaring state and adding state to the statemachine:
@@ -26,6 +30,10 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    QSettings settings("stock", "CoffeeMachine");
+    settings.setValue("stockCoffee", availableCoffee);
+    settings.setValue("stockMilk",   availableMilk);
+    settings.setValue("stockChange", availableChange);
     delete ui;
 }
 

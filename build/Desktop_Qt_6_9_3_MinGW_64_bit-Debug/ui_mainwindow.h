@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -61,6 +62,9 @@ public:
     QLineEdit *InsertedCredit;
     QLineEdit *Change;
     QLineEdit *CoffeePrice;
+    QLabel *label;
+    QLabel *label_2;
+    QLabel *label_3;
     QMenuBar *menubar;
     QMenu *menuCoffee_Machine;
     QStatusBar *statusbar;
@@ -162,17 +166,26 @@ public:
         stackedWidget->addWidget(page_MakeCoffee);
         InsertedCredit = new QLineEdit(centralwidget);
         InsertedCredit->setObjectName("InsertedCredit");
-        InsertedCredit->setGeometry(QRect(540, 150, 113, 24));
+        InsertedCredit->setGeometry(QRect(540, 170, 113, 24));
         Change = new QLineEdit(centralwidget);
         Change->setObjectName("Change");
-        Change->setGeometry(QRect(810, 150, 113, 24));
+        Change->setGeometry(QRect(800, 170, 113, 24));
         CoffeePrice = new QLineEdit(centralwidget);
         CoffeePrice->setObjectName("CoffeePrice");
-        CoffeePrice->setGeometry(QRect(670, 150, 113, 24));
+        CoffeePrice->setGeometry(QRect(670, 170, 113, 24));
+        label = new QLabel(centralwidget);
+        label->setObjectName("label");
+        label->setGeometry(QRect(540, 150, 91, 16));
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(670, 150, 49, 16));
+        label_3 = new QLabel(centralwidget);
+        label_3->setObjectName("label_3");
+        label_3->setGeometry(QRect(800, 150, 49, 16));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1009, 17));
+        menubar->setGeometry(QRect(0, 0, 1009, 21));
         menuCoffee_Machine = new QMenu(menubar);
         menuCoffee_Machine->setObjectName("menuCoffee_Machine");
         MainWindow->setMenuBar(menubar);
@@ -211,6 +224,9 @@ public:
         pbRefund->setText(QCoreApplication::translate("MainWindow", "Refund", nullptr));
         pbConfirm2->setText(QCoreApplication::translate("MainWindow", "Confirm", nullptr));
         InsertedCredit->setText(QString());
+        label->setText(QCoreApplication::translate("MainWindow", "Inserted Money", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Price", nullptr));
+        label_3->setText(QCoreApplication::translate("MainWindow", "Change", nullptr));
         menuCoffee_Machine->setTitle(QCoreApplication::translate("MainWindow", "Coffee Machine", nullptr));
     } // retranslateUi
 

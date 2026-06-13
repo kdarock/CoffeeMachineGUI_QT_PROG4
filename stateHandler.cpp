@@ -2,9 +2,9 @@
 #include "ui_mainwindow.h"
 #include "display.h"
 
-#define INITIAL_CHANGE 15
-#define INITIAL_COFFEE 4
-#define INITIAL_MILK   4
+#define INITIAL_CHANGE 100
+#define INITIAL_COFFEE 20
+#define INITIAL_MILK   20
 
 #define LATTE_COFFEE  4
 #define CAPPUCCINO_COFFEE 2
@@ -13,6 +13,10 @@
 #define LATTE_MILK 4
 #define CAPPUCCINO_MILK 2
 #define AMERICANO_MILK 0
+
+#define STOCKLOW_COFFEE 4
+#define STOCKLOW_MILK 4
+#define STOCKLOW_CHANGE 50
 
 void MainWindow::sStart_entered(void){
     /*logging and display string*/
@@ -60,18 +64,13 @@ void MainWindow::sIdle_entered(void){
     ui->CoffeePrice->setText(QString::number(0));
     ui->InsertedCredit->setText(QString::number(c.getInsertedCredit()));
     ui->Change->setText(QString::number(changeGive));
-    if(availableCoffee >= 4 && availableMilk >= 4 && availableChange >= 15)
+    if(availableCoffee < STOCKLOW_COFFEE || availableMilk < STOCKLOW_MILK || availableChange < STOCKLOW_CHANGE)
     {
-     /*Init for new customer*/
-        emit internalEvent->customSignal();
-    }
-    else{
-        /*if stock is low*/
         emit internalEvent->customStock();
     }
-
-
-
+    else{
+        emit internalEvent->customSignal();
+    }
 }
 
 void MainWindow::sCheckStock_entered(void){
@@ -418,10 +417,11 @@ void MainWindow::sGiveCoffee_entered(void){
     d.setLogString(d.getRealTime());
     d.addLogString("sGiveCoffee: entered");
     d.setCustomerString("Please grab your coffee and change");
+
     ui->AdminLog->appendPlainText(d.getLogString());
     ui->CustomerScreen->appendPlainText(d.getCustomerString());
     ui->stackedWidget->setCurrentWidget(ui->page_giveCoffee);
-    availableChange+=c.getInsertedCredit()-priceSumCoffee;
+
     logFile.open("logging.txt",std::ios::app);
     logFile << "Coffee:" <<availableCoffee <<std::endl;
     logFile <<"Milk: " <<availableMilk <<std::endl;
@@ -446,6 +446,11 @@ void MainWindow::sRefill_entered(void){
     availableChange=INITIAL_CHANGE;
     availableCoffee=INITIAL_COFFEE;
     availableMilk=INITIAL_MILK;
+    logFile.open("logging.txt",std::ios::app);
+    logFile << "Refilled Coffee:" <<availableCoffee <<std::endl;
+    logFile <<"Refilled Milk: " <<availableMilk <<std::endl;
+    logFile <<"Refilled Change:" <<availableChange<<std::endl<<std::endl;
+    logFile.close();
     QTimer::singleShot(2000, this, [this](){
         emit internalEvent->customSignal();
     });

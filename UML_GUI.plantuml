@@ -1,0 +1,44 @@
+@startuml
+title Coffee Machine GUI
+[*]-->sInitialiseHardware: init()
+sInitialiseHardware-->sIdle: 
+sIdle-->sCheckStock: stockLow()
+sIdle-->sAdminMode: adminLogin()
+sAdminMode-->sIdle: adminLogout()
+sCheckStock-->sAdminMode: adminLogin()
+sIdle-->sChooseCoffee: customer()
+sChooseCoffee-->sLatte: choseLatte()
+sChooseCoffee-->sCappuccino: choseCappuccino()
+sChooseCoffee-->sAmericano: choseAmericano()
+
+sLatte-->sConfirmation: latteChosen()
+sCappuccino-->sConfirmation: cappuccinoChosen()
+sAmericano-->sConfirmation: americanoChosen()
+
+sConfirmation-->sWaitForMoney: confirm()
+sConfirmation-->sCancel: cancel()
+
+sRefund-->sCancel: finishedRefund()
+sWaitForMoney-->s1e: insterted1e()
+sWaitForMoney-->s50c: inserted50c()
+sWaitForMoney-->s1c: inserted1c()
+sWaitForMoney-->s2e: inserted2e()
+sWaitForMoney-->s25c: inserted25c()
+
+s1e-->sWaitForMoney: notEnough() 
+s50c-->sWaitForMoney: notEnough()
+s1c-->sWaitForMoney: notEnough()
+s2e-->sWaitForMoney: notEnough()
+s25c-->sWaitForMoney: notEnough()
+
+s1e-->sConfirmation2: enough()
+s50c-->sConfirmation2: enough()
+s1c-->sConfirmation2: enough()
+s2e-->sConfirmation2: enough()
+s25c-->sConfirmation2: enough()
+
+sConfirmation2-->sRefund: refund()
+sConfirmation2-->sMakeCoffee: confirm2()
+sMakeCoffee-->sGiveCoffee: coffeeFinished()
+sGiveCoffee-->sIdle: nextCustomer()
+@enduml
